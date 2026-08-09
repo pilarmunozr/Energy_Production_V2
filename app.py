@@ -22,6 +22,10 @@ app.config.suppress_callback_exceptions = True
 # Load data from csv
 def load_data():
     # To do: Completar la función 
+    df = pd.read_csv("datos_energia.csv")
+    df["time"] = pd.to_datetime(df["time"])
+    df.set_index("time", inplace=True)
+    return df
     
 
 # Cargar datos
@@ -98,7 +102,7 @@ def description_card():
         id="description-card",
         children=[
             #html.H5("Proyecto 1"),
-            html.H3("Pronóstico de producción energética"),
+            html.H3("Pronóstico de producción energética TALLER2"),
             html.Div(
                 id="intro",
                 children="Esta herramienta contiene información sobre la demanda energética total en Austria cada hora según lo públicado en ENTSO-E Data Portal. Adicionalmente, permite realizar pronósticos hasta 5 dias en el futuro."
